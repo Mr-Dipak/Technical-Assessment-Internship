@@ -4,15 +4,15 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const AccordionRoot = ({ className, ...props }) => (
+const AccordionRoot: React.FC<React.ComponentPropsWithoutRef<typeof Accordion.Root>> = ({ className, ...props }) => (
   <Accordion.Root className={cn("border", className)} {...props} />
 );
 
-const AccordionItem = ({ className, ...props }) => (
+const AccordionItem: React.FC<React.ComponentPropsWithoutRef<typeof Accordion.Item>> = ({ className, ...props }) => (
   <Accordion.Item className={cn("border-b", className)} {...props} />
 );
 
-const AccordionTrigger = ({ className, children, ...props }) => (
+const AccordionTrigger: React.FC<React.ComponentPropsWithoutRef<typeof Accordion.Trigger>> = ({ className, children, ...props }) => (
   <Accordion.Header className="flex">
     <Accordion.Trigger
       className={cn(
@@ -27,7 +27,7 @@ const AccordionTrigger = ({ className, children, ...props }) => (
   </Accordion.Header>
 );
 
-const AccordionContent = ({ className, children, ...props }) => (
+const AccordionContent: React.FC<React.ComponentPropsWithoutRef<typeof Accordion.Content>> = ({ className, children, ...props }) => (
   <Accordion.Content
     className={cn(
       "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",

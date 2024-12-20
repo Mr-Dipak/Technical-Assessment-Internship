@@ -1,11 +1,11 @@
 "use client";
 
-import { 
-  Bell, 
-  HelpCircle, 
-  MessageSquare, 
-  Search, 
-  Settings 
+import {
+  Bell,
+  HelpCircle,
+  MessageSquare,
+  Search,
+  Settings,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,8 +38,8 @@ export function Navbar() {
           <Bell className="h-5 w-5" />
           <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full" />
         </Button>
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
+        <Avatar className="">
+          <AvatarImage src="https://github.com/shadcn.png" alt="User Avatar" />
           <AvatarFallback>AD</AvatarFallback>
         </Avatar>
       </div>

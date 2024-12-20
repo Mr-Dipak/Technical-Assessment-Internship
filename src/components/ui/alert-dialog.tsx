@@ -11,90 +11,51 @@ interface AlertDialogProps {
   [key: string]: any;
 }
 
-export const AlertDialogRoot: React.FC<AlertDialogProps> = ({ children, ...props }) => (
-  <AlertDialog.Root {...props}>{children}</AlertDialog.Root>
+const AlertDialogRoot: React.FC<AlertDialogProps> = ({ ...props }) => (
+  <AlertDialog.Root {...props} />
 );
 
-export const AlertDialogTrigger: React.FC<AlertDialogProps> = ({ className, ...props }) => (
-  <AlertDialog.Trigger
-    className={cn("button-class-if-needed", className)}
-    {...props}
-  />
+const AlertDialogTrigger: React.FC<AlertDialogProps> = ({ className, ...props }) => (
+  <AlertDialog.Trigger className={cn(buttonVariants({ variant: "default" }), className)} {...props} />
 );
 
-export const AlertDialogPortal: React.FC<AlertDialogProps> = ({ children, ...props }) => (
-  <AlertDialog.Portal {...props}>{children}</AlertDialog.Portal>
-);
-
-export const AlertDialogOverlay: React.FC<AlertDialogProps> = ({ className, ...props }) => (
-  <AlertDialog.Overlay
-    className={cn(
-      "fixed inset-0 z-50 bg-black/80 data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
-      className
-    )}
-    {...props}
-  />
-);
-
-export const AlertDialogContent: React.FC<AlertDialogProps> = ({ className, children, ...props }) => (
-  <AlertDialogPortal>
-    <AlertDialogOverlay />
+const AlertDialogContent: React.FC<AlertDialogProps> = ({ className, children, ...props }) => (
+  <AlertDialog.Portal>
+    <AlertDialog.Overlay className="fixed inset-0 bg-black bg-opacity-50" />
     <AlertDialog.Content
       className={cn(
-        "fixed left-1/2 top-1/2 z-50 w-full max-w-lg transform -translate-x-1/2 -translate-y-1/2 bg-background p-6 shadow-lg sm:rounded-lg",
+        "fixed top-1/2 left-1/2 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 bg-white p-6 shadow-lg",
         className
       )}
       {...props}
     >
       {children}
     </AlertDialog.Content>
-  </AlertDialogPortal>
+  </AlertDialog.Portal>
 );
 
-export const AlertDialogHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => (
-  <div
-    className={cn(
-      "flex flex-col space-y-2 text-center sm:text-left",
-      className
-    )}
-    {...props}
-  />
+const AlertDialogTitle: React.FC<AlertDialogProps> = ({ className, ...props }) => (
+  <AlertDialog.Title className={cn("text-lg font-medium", className)} {...props} />
 );
 
-export const AlertDialogFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => (
-  <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className
-    )}
-    {...props}
-  />
+const AlertDialogDescription: React.FC<AlertDialogProps> = ({ className, ...props }) => (
+  <AlertDialog.Description className={cn("mt-2 text-sm text-gray-500", className)} {...props} />
 );
 
-export const AlertDialogTitle: React.FC<AlertDialogProps> = ({ className, ...props }) => (
-  <AlertDialog.Title
-    className={cn("text-lg font-semibold", className)}
-    {...props}
-  />
+const AlertDialogAction: React.FC<AlertDialogProps> = ({ className, ...props }) => (
+  <AlertDialog.Action className={cn(buttonVariants({ variant: "default" }), className)} {...props} />
 );
 
-export const AlertDialogDescription: React.FC<AlertDialogProps> = ({ className, ...props }) => (
-  <AlertDialog.Description
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
+const AlertDialogCancel: React.FC<AlertDialogProps> = ({ className, ...props }) => (
+  <AlertDialog.Cancel className={cn(buttonVariants({ variant: "secondary" }), className)} {...props} />
 );
 
-export const AlertDialogAction: React.FC<AlertDialogProps> = ({ className, ...props }) => (
-  <AlertDialog.Action
-    className={cn(buttonVariants(), className)}
-    {...props}
-  />
-);
-
-export const AlertDialogCancel: React.FC<AlertDialogProps> = ({ className, ...props }) => (
-  <AlertDialog.Cancel
-    className={cn(buttonVariants({ variant: "outline" }), className)}
-    {...props}
-  />
-);
+export {
+  AlertDialogRoot as AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+};
