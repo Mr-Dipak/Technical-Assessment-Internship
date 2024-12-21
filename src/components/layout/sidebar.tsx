@@ -59,7 +59,8 @@ export function Sidebar() {
     <div className="space-y-4 py-4 flex flex-col h-full bg-white dark:bg-gray-900">
       <div className="px-3 py-2 flex-1">
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
-          <h1 className="text-2xl font-bold">Quyl.</h1>
+            <img src="/vector.svg" alt="Vector Logo" className="h-12 mr-2" />
+            {/* <h1 className="text-2xl font-bold">Quyl.</h1> */}
         </Link>
         <div className="space-y-1">
           {routes.map((route) => (
