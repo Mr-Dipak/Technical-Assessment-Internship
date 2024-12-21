@@ -18,7 +18,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    /* Set background color for light mode to #4b5563 (medium dark gray) */
+    --background: 210 28.6% 93%;  /* Approximate light gray background for #4b5563 */
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
@@ -44,6 +45,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -80,3 +82,4 @@
     @apply bg-background text-foreground;
   }
 }
+

@@ -13,7 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Navbar() {
   return (
-    <div className="flex items-center p-4 bg-white dark:bg-gray-900">
+    <div className="flex items-center pt-4 pb-4 pr-4 bg-background dark:bg-background dark:text-foreground ">
       <div className="flex-1">
         <div className="relative w-full max-w-xl">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -42,6 +42,7 @@ export function Navbar() {
           <AvatarImage src="https://github.com/shadcn.png" alt="User Avatar" />
           <AvatarFallback>AD</AvatarFallback>
         </Avatar>
+        <p className="text-lg font-semibold ">Dipak Rathod</p>
       </div>
     </div>
   );

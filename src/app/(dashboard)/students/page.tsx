@@ -32,17 +32,17 @@ export default function StudentsPage() {
 
   return (
     <>
-      <div className="h-full p-4 space-y-2">
+      <div className="h-full p-4 space-y-2 bg-white border rounded-lg shadow-md dark:bg-background">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <select className="p-2 border rounded-md">
-              <option>AY 2024-25</option>
+            <select className="p-2 border rounded-md bg-btn dark:bg-secondary">
+              <option >AY 2024-25</option>
             </select>
-            <select className="p-2 border rounded-md">
-              <option>CBSE 9</option>
+            <select className="p-2 border rounded-md bg-btn dark:bg-secondary">
+              <option className="bg-slate-500">CBSE 9</option>
             </select>
           </div>
-          <Button onClick={() => setOpen(true)}>
+          <Button className="bg-btn text-black hover:text-white dark:bg-secondary dark:text-white" onClick={() => setOpen(true)}>
             <Plus className="h-4 w-4 mr-2" />
             Add new Student
           </Button>
