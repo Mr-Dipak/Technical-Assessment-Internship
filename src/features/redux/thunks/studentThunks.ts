@@ -25,9 +25,7 @@ export const createStudent = createAsyncThunk(
   async (student: Omit<Student, 'id' | 'dateJoined' | 'lastLogin'> & { courses: string[] }, { rejectWithValue }) => {
     try {
       console.log('Creating student with payload:', student);
-      // Convert course IDs to Course objects
-      const courses: Course[] = student.courses.map(courseId => ({ id: courseId } as Course));
-      const response = await createStudentApi({ ...student, courses });
+      const response = await createStudentApi(student);
       console.log('API response:', response);
       return response;
     } catch (error) {
