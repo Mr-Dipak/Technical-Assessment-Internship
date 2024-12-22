@@ -3,7 +3,7 @@ export interface Student {
   name: string;
   email: string;
   cohort: string;
-  courses: Course[];
+  courses: string[]; // Change to string[]
   dateJoined: Date;
   lastLogin: Date;
   status: 'active' | 'inactive';
