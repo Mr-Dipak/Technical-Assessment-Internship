@@ -13,6 +13,9 @@ export const fetchCourses = createAsyncThunk(
       return data;
     } catch (error) {
       console.error('Error fetching courses:', error);
+      if (error instanceof TypeError) {
+        return rejectWithValue('Network error: Failed to fetch courses');
+      }
       return rejectWithValue((error as Error).message);
     }
   }
