@@ -50,7 +50,7 @@ export function ViewUpdateDeleteDialog({ student }: ViewUpdateDeleteDialogProps)
   const handleUpdate = async () => {
     const updatedCourses = selectedCourses.map((courseId) => {
       const course = courses.find((course) => course.id === courseId);
-      return course ? { id: course.id, name: course.name } : { id: courseId, name: '' };
+      return course ? course.id : courseId;
     });
     await dispatch(updateStudent({ id: student.id, student: { name, email, cohort, courses: updatedCourses } }));
     setOpen(false);
