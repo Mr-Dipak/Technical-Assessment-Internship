@@ -82,8 +82,8 @@ export async function PUT(request: Request) {
       where: { id },
       data: {
         ...data,
-        courses: data.courses
-          ? { connect: data.courses.map((id) => ({ id })) }
+        courses: data.courses.length > 0
+          ? { set: [], connect: data.courses.map((id) => ({ id })) }
           : undefined,
       },
       include: { courses: true },

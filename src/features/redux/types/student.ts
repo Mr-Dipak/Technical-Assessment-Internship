@@ -1,18 +1,17 @@
+export interface Course {
+  id: string;
+  name: string;
+}
+
 export interface Student {
   id: string;
   name: string;
   email: string;
   cohort: string;
-  courses: string[]; // Change to string[]
-  dateJoined: Date;
-  lastLogin: Date;
   status: 'active' | 'inactive';
-}
-
-export interface Course {
-  id: string;
-  name: string;
-  description?: string;
+  dateJoined: string;
+  lastLogin: string;
+  courses: (string | Course)[];
 }
 
 export interface StudentsState {

@@ -1,9 +1,13 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/features/redux/store';
+import { Student } from '@/features/redux/types/student';
 
-export function StudentsTable() {
-  const students = useSelector((state: RootState) => state.students.items);
+interface StudentsTableProps {
+  students: Student[];
+}
 
+const StudentsTable: React.FC<StudentsTableProps> = ({ students }) => {
   return (
     <table>
       <thead>
@@ -20,10 +24,12 @@ export function StudentsTable() {
             <td>{student.name}</td>
             <td>{student.email}</td>
             <td>{student.cohort}</td>
-            <td>{student.courses.map(course => course.id).join(', ')}</td>
+            <td>{student.courses.map((course: string | { id: string; name: string }) => typeof course === 'string' ? course : course.id).join(', ')}</td>
           </tr>
         ))}
       </tbody>
     </table>
   );
-}
+};
+
+export default StudentsTable;
