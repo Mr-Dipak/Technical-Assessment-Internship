@@ -66,12 +66,17 @@ export function AddStudentDialog({ open, onOpenChange }: AddStudentDialogProps) 
     }
 
     try {
+      const coursesToSubmit = selectedCourses.map((courseId) => {
+        const course = courses.find((course) => course.id === courseId);
+        return course ? { id: course.id, name: course.name } : { id: courseId, name: '' };
+      });
+
       await dispatch(
         createStudent({
           name,
           email,
           cohort,
-          courses: selectedCourses, // Send course IDs as strings
+          courses: coursesToSubmit, // Send course objects with id and name
         })
       ).unwrap();
       onOpenChange(false);
