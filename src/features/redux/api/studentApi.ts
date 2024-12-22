@@ -1,4 +1,4 @@
-import { Student, Course } from '../types/student';
+import { Student } from '../types/student';
 
 // Fetch all students, including courses and status
 export async function fetchStudentsApi() {
@@ -10,7 +10,7 @@ export async function fetchStudentsApi() {
 }
 
 // Create a new student with courses
-export async function createStudentApi(student: Omit<Student, 'id' | 'dateJoined' | 'lastLogin'> & { courses: Course[] }) {
+export async function createStudentApi(student: Omit<Student, 'id' | 'dateJoined' | 'lastLogin'> & { courses: string[] }) {
   const response = await fetch('/api/students', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

@@ -16,7 +16,6 @@ import { AddStudentDialog } from "@/components/students/add-student-dialog";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchStudents } from '@/features/redux/thunks/studentThunks';
 import { RootState } from '@/features/redux/store';
-import { DialogAction, DialogContent } from "@/components/ui/dialog";
 import { ViewUpdateDeleteDialog } from "@/components/action/view-update-delete";
 
 export default function StudentsPage() {
