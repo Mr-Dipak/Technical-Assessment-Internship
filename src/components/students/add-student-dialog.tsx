@@ -76,6 +76,7 @@ export function AddStudentDialog({ open, onOpenChange }: AddStudentDialogProps) 
           name,
           email,
           cohort,
+          status: "active", // Add default status
           courses: coursesToSubmit, // Send course objects with id and name
         })
       ).unwrap();
