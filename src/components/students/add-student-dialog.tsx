@@ -14,7 +14,6 @@ import { Label } from "@/components/ui/label";
 import { createStudent } from "@/features/redux/thunks/studentThunks";
 import { AppDispatch, RootState } from "@/features/redux/store";
 import { fetchCourses } from "@/features/redux/thunks/courseThunks";
-import { Course } from "@/features/redux/types/student";
 
 interface AddStudentDialogProps {
   open: boolean;

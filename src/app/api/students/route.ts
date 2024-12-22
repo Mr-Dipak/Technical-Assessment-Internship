@@ -7,7 +7,7 @@ const studentSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   cohort: z.string(),
-  courses: z.array(z.string()),
+  courses: z.array(z.string()), // Ensure courses is an array of strings
 });
 
 const updateStudentSchema = z.object({
@@ -17,7 +17,7 @@ const updateStudentSchema = z.object({
   cohort: z.string().optional(),
   status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
   lastLogin: z.string().datetime().optional(),
-  courses: z.array(z.string()).default([]), // Ensure courses is always an array
+  courses: z.array(z.string()).default([]), // Ensure courses is always an array of strings
 });
 
 const deleteStudentSchema = z.object({
