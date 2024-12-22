@@ -22,7 +22,7 @@ export const fetchStudents = createAsyncThunk(
 
 export const createStudent = createAsyncThunk(
   'students/createStudent',
-  async (student: Omit<Student, 'id' | 'dateJoined' | 'lastLogin'>, { rejectWithValue }) => {
+  async (student: Omit<Student, 'id' | 'dateJoined' | 'lastLogin' | 'courses'> & { courses: string[] }, { rejectWithValue }) => {
     try {
       console.log('Creating student with payload:', student);
       const response = await createStudentApi(student);
