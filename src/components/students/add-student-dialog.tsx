@@ -71,7 +71,7 @@ export function AddStudentDialog({ open, onOpenChange }: AddStudentDialogProps) 
           email,
           cohort,
           status: "active", // Add default status
-          courses: selectedCourses, // Send course IDs as strings
+          courses: selectedCourses.map((courseId) => courses.find((course) => course.id === courseId)!), // Map course IDs to course objects
         })
       ).unwrap();
       onOpenChange(false);
