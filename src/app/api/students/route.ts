@@ -15,7 +15,7 @@ const updateStudentSchema = z.object({
   name: z.string().optional(),
   email: z.string().email("Invalid email format").optional(),
   cohort: z.string().optional(),
-  status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
+  status: z.enum(["active", "inactive"]).optional(),
   lastLogin: z.string().datetime().optional(),
   courses: z.array(z.string()).default([]), // Ensure courses is always an array of strings
 });
