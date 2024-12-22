@@ -77,8 +77,8 @@ export default function StudentsPage() {
                   <TableCell className="xs2">
                     <div className="flex gap-1">
                       {student.courses?.map((course) => (
-                        <Badge key={course.id} variant="secondary">
-                          {course.name}
+                        <Badge key={typeof course === 'string' ? course : course.id} variant="secondary">
+                          {typeof course === 'string' ? course : course.name}
                         </Badge>
                       )) ?? null}
                     </div>
