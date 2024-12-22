@@ -81,5 +81,12 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .xs {
+    @apply text-xs font-bold text-black;
+  }
+  .xs {
+    @apply text-xs text-black;
+  }
 }
 

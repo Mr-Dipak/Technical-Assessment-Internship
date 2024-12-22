@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { createStudent } from '@/features/redux/thunks/studentThunks';
 
 interface AddStudentDialogProps {
   open: boolean;
@@ -14,23 +16,33 @@ interface AddStudentDialogProps {
 export function AddStudentDialog({ open, onOpenChange }: AddStudentDialogProps) {
   const [loading, setLoading] = useState(false);
   const [selectedCourses, setSelectedCourses] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const dispatch = useDispatch();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
 
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const cohort = formData.get("cohort") as string;
 
-    // Add form submission logic here
-    console.log({ name, email, cohort, selectedCourses });
-
-    setTimeout(() => {
-      setLoading(false);
-      onOpenChange(false);
-    }, 1000);
+    // Dispatch the action to add a new student
+    dispatch(createStudent({ name, email, cohort, courses: selectedCourses }))
+      .then((result) => {
+        if (createStudent.rejected.match(result)) {
+          setError(result.payload || 'Error creating student');
+        } else {
+          onOpenChange(false);
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Error creating student');
+        setLoading(false);
+      });
   };
 
   const toggleCourseSelection = (course: string) => {
@@ -77,6 +89,7 @@ export function AddStudentDialog({ open, onOpenChange }: AddStudentDialogProps) 
               ))}
             </div>
           </div>
+          {error && <div className="text-red-500">{error}</div>}
           <div className="flex justify-end gap-2">
             <Button variant="outline" type="button" onClick={() => onOpenChange(false)}>
               Cancel

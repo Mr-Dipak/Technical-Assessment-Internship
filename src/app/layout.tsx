@@ -2,10 +2,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Provider } from 'react-redux';
+
 
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { ClientProvider } from '@/components/ClientProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,12 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-
+          <ClientProvider>
           <ThemeProvider attribute="class" defaultTheme="light">
             {children}
             <Toaster />
           </ThemeProvider>
-   
+          </ClientProvider>
       </body>
     </html>
   );
