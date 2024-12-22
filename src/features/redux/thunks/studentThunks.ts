@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Student } from '../types/student';
+import { Student, Course } from '../types/student';
 import { 
   fetchStudentsApi, 
   createStudentApi, 
@@ -22,10 +22,12 @@ export const fetchStudents = createAsyncThunk(
 
 export const createStudent = createAsyncThunk(
   'students/createStudent',
-  async (student: Omit<Student, 'id' | 'dateJoined' | 'lastLogin' | 'courses'> & { courses: string[] }, { rejectWithValue }) => {
+  async (student: Omit<Student, 'id' | 'dateJoined' | 'lastLogin'> & { courses: string[] }, { rejectWithValue }) => {
     try {
       console.log('Creating student with payload:', student);
-      const response = await createStudentApi(student);
+      // Convert course IDs to Course objects
+      const courses: Course[] = student.courses.map(courseId => ({ id: courseId } as Course));
+      const response = await createStudentApi({ ...student, courses });
       console.log('API response:', response);
       return response;
     } catch (error) {
