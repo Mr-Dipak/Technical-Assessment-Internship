@@ -82,6 +82,20 @@ export const DialogFooter = ({ className, ...props }: DialogFooterProps) => (
   />
 );
 
+// Action component
+export interface DialogActionProps extends HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
+export const DialogAction = ({ className, ...props }: DialogActionProps) => (
+  <div
+    className={cn(
+      "flex justify-end space-x-2",
+      className
+    )}
+    {...props}
+  />
+);
+
 // Title component
 export interface DialogTitleProps extends HTMLAttributes<HTMLHeadingElement> {
   className?: string;

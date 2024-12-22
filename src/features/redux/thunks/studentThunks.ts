@@ -9,8 +9,14 @@ import {
 
 export const fetchStudents = createAsyncThunk(
   'students/fetchStudents',
-  async () => {
-    return await fetchStudentsApi();
+  async (_, { rejectWithValue }) => {
+    try {
+      const students = await fetchStudentsApi();
+      return students;
+    } catch (error) {
+      console.error('Error fetching students:', error);
+      return rejectWithValue((error as Error).message);
+    }
   }
 );
 
@@ -19,9 +25,12 @@ export const createStudent = createAsyncThunk(
   async (student: Omit<Student, 'id' | 'dateJoined' | 'lastLogin'>, { rejectWithValue }) => {
     try {
       console.log('Creating student with payload:', student);
-      return await createStudentApi(student);
+      const response = await createStudentApi(student);
+      console.log('API response:', response);
+      return response;
     } catch (error) {
-      return rejectWithValue(error.message);
+      console.error('Error creating student:', error);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
@@ -30,9 +39,11 @@ export const updateStudent = createAsyncThunk(
   'students/updateStudent',
   async ({ id, student }: { id: string; student: Partial<Student> }, { rejectWithValue }) => {
     try {
-      return await updateStudentApi(id, student);
+      const updatedStudent = await updateStudentApi(id, student);
+      return updatedStudent;
     } catch (error) {
-      return rejectWithValue(error.message);
+      console.error('Error updating student:', error);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
@@ -41,9 +52,11 @@ export const deleteStudent = createAsyncThunk(
   'students/deleteStudent',
   async (id: string, { rejectWithValue }) => {
     try {
-      return await deleteStudentApi(id);
+      const response = await deleteStudentApi(id);
+      return response;
     } catch (error) {
-      return rejectWithValue(error.message);
+      console.error('Error deleting student:', error);
+      return rejectWithValue((error as Error).message);
     }
   }
 );
