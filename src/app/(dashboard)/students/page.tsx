@@ -76,7 +76,7 @@ export default function StudentsPage() {
                   <TableCell className="xs2">{student.cohort}</TableCell>
                   <TableCell className="xs2">
                     <div className="flex gap-1">
-                      {student.courses?.map((course) => {
+                      {student.courses?.map((course: string | { id: string; name: string }) => {
                         const courseKey = typeof course === 'string' ? course : course.id;
                         const courseName = typeof course === 'string' ? course : course.name;
                         return (
