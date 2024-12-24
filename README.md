@@ -17,8 +17,8 @@ To get started with the project, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/technical-assessment-internship.git
-    cd technical-assessment-internship
+    git clone (https://github.com/Mr-Dipak/Technical-Assessment-Internship)
+    cd Technical-Assessment-Internship
     ```
 
 2. Install dependencies:
